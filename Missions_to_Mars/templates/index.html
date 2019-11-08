@@ -23,49 +23,31 @@
     </div>    
 
     <h1>Latest Mars News</h1>
-    <h3>News Title</h3>
-    <p>News Paragraph ... This is the latest Mars news</p>
+    <h3>{{ mars_data.news_title }}</h3>
+    <p>{{ mars_data.news_p }}</p>
     <section>
       <div class="row">
           <div class="col">
             <h1>Featured Mars Image</h1>
-            <p style="padding-bottom: 10px"><img src="https://www.jpl.nasa.gov/spaceimages/images/mediumsize/PIA18904_ip.jpg" alt="Featured Image" width="500" height="400"></p>
+            <p style="padding-bottom: 10px"><img src="{{mars_data.featured_image_url}}" alt="Featured Image" width="500" height="400"></p>
           </div>
           <div class="col">
 
-            <div class="content-box" style="box-sizing: width: 100%; border: solid #e6e6e6 1px;padding: 20px;">
+            <div class="content-box" style="box-sizing: width: 100%; border: solid #e6e6e6 1px; padding: 20px">
               <h3>Current Weather on Mars</h3>
-              <p>hello world</p></span>
+              <p>{{ mars_data.mars_weather }}</p></span>
             </div>
             <div class="facts">
               <p></p>
               <h4>Mars Facts</h4>
               <table class="table table-bordered table-sm">
-                  <thead>
-                    <tr>
-                      <th>Firstname</th>
-                      <th>Lastname</th>
-                      <th>Email</th>
+                 {% for key, value in mars_data.mars_facts.iteritems() %}
+                   <tr>
+                      <th> {{ key }} </th>
+                      <td> {{ value }} </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>John</td>
-                      <td>Doe</td>
-                      <td>john@example.com</td>
-                    </tr>
-                    <tr>
-                      <td>Mary</td>
-                      <td>Moe</td>
-                      <td>mary@example.com</td>
-                    </tr>
-                    <tr>
-                      <td>July</td>
-                      <td>Dooley</td>
-                      <td>july@example.com</td>
-                    </tr>
-                  </tbody>
-                </table>
+                {% endfor %}
+              </table>
             </div>
           </div>
       </div>
@@ -80,29 +62,28 @@
 
         <div class="row">
             <div class="col-6" style="box-sizing: width: 100%; border: solid #e6e6e6 1px;padding: 20px;align-items: center">
-                <img src="https://astrogeology.usgs.gov/cache/images/cfa62af2557222a02478f1fcd781d445_cerberus_enhanced.tif_full.jpg" alt="Cerberus Hemisphere" width="400" height="400">
-                <h5>Cerberus Hemisphere</h5>
+                <img src="{{ mars_data.mars_hemisphere[0]['img_url'] }}" alt="{{ mars_data.mars_hemisphere[0]['title'] }}" width="400" height="400">
+                <h5>{{ mars_data.mars_hemisphere[0]['title'] }}</h5>
             </div>
             <div class="col-6" style="box-sizing: width: 100%; border: solid #e6e6e6 1px; padding: 20px;align-items: center">
-                <img src="https://astrogeology.usgs.gov/cache/images/3cdd1cbf5e0813bba925c9030d13b62e_schiaparelli_enhanced.tif_full.jpg" alt="Schiaparelli Hemisphere" width="400" height="400">
-                <h5>Schiaparelli Hemisphere</h5>
+                <img src="{{ mars_data.mars_hemisphere[1]['img_url'] }}"" alt="{{ mars_data.mars_hemisphere[1]['title'] }}" width="400" height="400">
+                <h5>{{ mars_data.mars_hemisphere[1]['title'] }}</h5>
             </div>
         </div>
        
         <div class="row">
             <div class="col-6" style="box-sizing: width: 100%; border: solid #e6e6e6 1px;padding: 20px;align-items: center">
-                <img src="https://astrogeology.usgs.gov/cache/images/ae209b4e408bb6c3e67b6af38168cf28_syrtis_major_enhanced.tif_full.jpg" alt="Syrtis Major Hemisphere" width="400" height="400">
-                <h5>Syrtis Major Hemisphere</h5>
+                <img src="{{ mars_data.mars_hemisphere[2]['img_url'] }}"" alt="{{ mars_data.mars_hemisphere[2]['title'] }}" width="400" height="400">
+                <h5>{{ mars_data.mars_hemisphere[2]['title'] }}</h5>
             </div>
             <div class="col-6" style="box-sizing: width: 100%; border: solid #e6e6e6 1px;padding: 20px;align-items: center">
-                <img src="https://astrogeology.usgs.gov/cache/images/7cf2da4bf549ed01c17f206327be4db7_valles_marineris_enhanced.tif_full.jpg" alt="Valles Marineris Hemisphere" width="400" height="400">
-                <h5>Valles Marineris Hemisphere</h5>
+                <img src="{{ mars_data.mars_hemisphere[3]['img_url'] }}"" alt="{{ mars_data.mars_hemisphere[3]['title'] }}" width="400" height="400">
+                <h5>{{ mars_data.mars_hemisphere[3]['title'] }}</h5>
             </div>
         </div>
 <!-- </div>
     </section> -->
-          <!-- Render our data -->
-      <!-- <h1>{{ text }}</h1> -->
+
 </body>
 
 </html>

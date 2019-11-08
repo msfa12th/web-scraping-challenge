@@ -12,6 +12,7 @@ def scrape():
     from splinter import Browser
     import pandas as pd
 
+    Mars_Dict ={}
 
     # ### NASA Mars News
     page = requests.get("https://mars.nasa.gov/news/")
@@ -20,10 +21,12 @@ def scrape():
     news_title=soup.find_all('div',class_='content_title')[0].text
     news_title = news_title.replace('\n','')
     news_title
-
+    
     news_p=soup.find_all('div',class_='rollover_description_inner')[0].text
     news_p = news_p.replace('\n','')
     news_p
+
+    Mars_Dict = {'news_title': news_title, 'news_p': news_p}
 
     # ### JPL Mars Space Images - Featured Image
     get_ipython().system('which chromedriver')
@@ -39,10 +42,11 @@ def scrape():
     html = browser.html
     soup = BeautifulSoup(html, 'html.parser')
     browser.click_link_by_partial_text('FULL IMAGE')
-    fullImage=soup.find_all(id="full_image")
-ß    imagePath=fullImage[0]['data-fancybox-href']
+    fullImage=soup.find_all(id="full_image")   
+    imagePath=fullImage[0]['data-fancybox-href']
     featured_image_url= urlDomain + imagePath
     featured_image_url
+    Mars_Dict['featured_image_url'] = featured_image_url
 
     # ### Mars Weather
     tpage = requests.get("https://twitter.com/marswxreport?lang=en")
@@ -50,7 +54,7 @@ def scrape():
     latestTweet=tsoup.find_all('p',class_='TweetTextSize')
     latestTweet[0].text
     mars_weather=latestTweet[0].text
-
+    Mars_Dict['mars_weather'] = mars_weather
 
     # ### Mars Fact
     url = 'https://space-facts.com/mars'
@@ -59,6 +63,9 @@ def scrape():
     df=df.rename(columns={0: "description",1: "value"})
     df=df.set_index('description')
     df.to_html('table.html')
+    fact_dict = df.to_dict()
+    Mars_Dict['mars_facts'] = fact_dict
+
 
     # ### Mars Hemispheres
     urlDomain = 'https://astrogeology.usgs.gov'
@@ -95,8 +102,9 @@ def scrape():
             myList.append(myDict)
         
     print(myList)
+    Mars_Dict['mars_hemisphere'] = myList
 
-
+return Mars_Dict
 
 
 

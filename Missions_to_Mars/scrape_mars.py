@@ -29,7 +29,7 @@ def scrape():
     Mars_Dict = {'news_title': news_title, 'news_p': news_p}
 
     # ### JPL Mars Space Images - Featured Image
-    get_ipython().system('which chromedriver')
+    #get_ipython().system('which chromedriver')
 
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
     browser = Browser('chrome', **executable_path, headless=False)
@@ -104,7 +104,12 @@ def scrape():
     print(myList)
     Mars_Dict['mars_hemisphere'] = myList
 
-return Mars_Dict
+    print("Congrulations!! I'm done with the scrape!! Check out my data:")
+    print(Mars_Dict)
+    #return Mars_Dict
+    return
+
+scrape()
 
 
 

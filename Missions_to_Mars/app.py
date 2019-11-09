@@ -14,8 +14,17 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    mars = mongo.db.mars_data.find_one()
-    return render_template("index.html", mars_data=mars)
+
+    try {
+         mars = mongo.db.mars_data.find_one()
+         if (!mars) {
+             return render_template("index.html")
+         } else {
+                return render_template("index.html", mars_data=mars)
+         }
+    } catch (err) {
+        return render_template("index.html")
+    }   
 
 
 @app.route("/scrape")

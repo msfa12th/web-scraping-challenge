@@ -15,16 +15,15 @@ mongo = PyMongo(app)
 @app.route("/")
 def index():
 
-    try {
-         mars = mongo.db.mars_data.find_one()
-         if (!mars) {
-             return render_template("index.html")
-         } else {
-                return render_template("index.html", mars_data=mars)
-         }
-    } catch (err) {
-        return render_template("index.html")
-    }   
+    mars = mongo.db.mars_data.find_one()
+
+    if (mars):
+        return render_template("index.html", mars_data=mars)
+    else:
+        mars = mongo.db.mars_data
+        mars_data = scrape_mars.scrape()
+        mars.update({}, mars_data, upsert=True)
+        return render_template("index.html", mars_data=mars)
 
 
 @app.route("/scrape")
@@ -32,6 +31,7 @@ def scraper():
     mars = mongo.db.mars_data
     mars_data = scrape_mars.scrape()
     mars.update({}, mars_data, upsert=True)
+
     return redirect("/", code=302)
 
 

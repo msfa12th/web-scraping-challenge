@@ -32,7 +32,7 @@ def scraper():
     mars_data = scrape_mars.scrape()
     mars.update({}, mars_data, upsert=True)
 
-    return redirect("/", code=302)
+    return render_template("index.html", mars_data=mars_data)
 
 
 if __name__ == "__main__":

@@ -106,10 +106,8 @@ def scrape():
 
     print("Congrulations!! I'm done with the scrape!! Check out my data:")
     print(Mars_Dict)
-    #return Mars_Dict
-    return
-
-scrape()
+    
+    return Mars_Dict
 
 
 

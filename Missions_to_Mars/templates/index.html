@@ -41,7 +41,14 @@
               <p></p>
               <h4>Mars Facts</h4>
               <table class="table table-bordered table-sm">
-                <tr><td></td><td>value</td></tr>
+                <tr><td></td><th>Value</th></tr>
+                 {% for key, value in mars_data.mars_facts['value'].items(): %}
+                   <tr>
+                      <th> {{ key }} </th>
+                      <td> {{ value }} </td>
+                    </tr>
+                {% endfor %}
+  
               </table>
             </div>
           </div>

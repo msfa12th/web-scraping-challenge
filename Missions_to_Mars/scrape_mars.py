@@ -54,7 +54,7 @@ def scrape():
     latestTweet=tsoup.find_all('p',class_='TweetTextSize')
     latestTweet[0].text
     mars_weather=latestTweet[0].text
-    Mars_Dict['mars_weather'] = mars_weather
+    Mars_Dict['mars_weather'] = mars_weather.split("pic.twitter")[0]
 
     # ### Mars Fact
     url = 'https://space-facts.com/mars'

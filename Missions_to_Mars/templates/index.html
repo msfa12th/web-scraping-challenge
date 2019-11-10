@@ -10,8 +10,47 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-   
+    <style>
+      h1 {
+          font-size: 28px;
+          font-family: 'Times New Roman', Times, serif;
+          font-weight: bold; 
+      } 
+        h2 {
+          font-size: 20px;
+          font-family: 'Times New Roman', Times, serif;
+          font-weight: bold; 
+          padding: 2px;
+          text-align:  center;
+        }
+
+        h3 {
+          font-size: 12px;
+          font-weight: bold; 
+          margin: 0px;
+          padding: 0px;
+        }
+        h4 {
+          font-size: 22px;
+          font-family: 'Times New Roman', Times, serif;
+          font-weight: bold; 
+          padding: 2px;
+          text-align:  left;
+        }
+        h5 {
+          font-size: 18px;
+          font-weight: bold; 
+          margin: 0px;
+          text-align: center;
+          padding: 10px;
+        }
+        p {
+          font-size: 10px;
+        }
+        .facts {
+          font-size: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,9 +78,10 @@
             </div>
             <div class="facts">
               <p></p>
-              <h4>Mars Facts</h4>
+              <h3>Mars Facts</h3>
               <table class="table table-bordered table-sm">
-                <tr><td></td><th>Value</th></tr>
+                <tr><td></td><th>value</th></tr>
+                <tr><th>description</th><td></td></tr>
                  {% for key, value in mars_data.mars_facts['value'].items(): %}
                    <tr>
                       <th> {{ key }} </th>
